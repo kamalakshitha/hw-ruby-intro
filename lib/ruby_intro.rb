@@ -1,82 +1,74 @@
 # When done, submit this entire file to the autograder.
 
+
 # Part 1
 
-def sum arr
+def sum array
+
   # kamalakshitha
+  
   Integer s = 0
-  arr.each do |i|
+  
+  array.each do |i| 
     s = s + i
   end
   return s
 end
 
-def max_2_sum arr
-  # YOUR CODE HERE
+def max_2_sum array
+  
   Integer s = 0;
-
-  if arr.length == 1
-    s =  arr[0]
-  elsif arr.length > 0
-    a = -(2**(0.size * 8 -2))
-    b = a
-    arr.each do |i|
-      if i > a
-        b = a
-        a = i
-      else
-        if i > b
-          b = i
-        end
-      end
-    end
-    s = a+b
+return 0 if array.empty?
+  if array.length == 1
+    s =  array[0]
+  elsif array.length > 0
+    array = array.sort
+    len = array.length-1
+    s = array[len]+array[len-1]
   end
   return s
 end
 
-def sum_to_n? arr, n
-  # YOUR CODE HERE
-  res = false
-  if arr.length > 1
-    s = 0
-    e = arr.length - 1
-    arr = arr.sort
-    while s < e do
-      if arr[s] + arr[e] > n
-        e = e-1
-      elsif arr[s] + arr[e] < n
-        s = s+1
+def sum_to_n? array, n
+  
+  result = false
+  if array.length > 1
+    first = 0
+    last = array.length - 1
+    array = array.sort
+    while first < last do
+      if array[first] + array[last] > n
+        last = last-1
+      elsif array[first] + array[last] < n
+        first = first + 1
       else
-        res = true
+        result = true
         break
       end
     end
   end
-  return res
+  return result
 end
+
 
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
   return "Hello, "+name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
   return s.match(/\A(?=[^aeiouAEIOU])(?=[a-zA-Z])/i)
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
   return s.match(/\A(([10]*00)|(0{1}))\Z/)
 end
+
 
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
   def initialize(isbn,price)
     if(isbn==''||price <= 0)
       raise ArgumentError, 'Invalid arguements'
@@ -107,5 +99,3 @@ class BookInStock
     return "$"+@price.to_i.to_s+"."+s
   end
 end
-
-
